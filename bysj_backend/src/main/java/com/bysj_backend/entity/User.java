@@ -1,0 +1,62 @@
+package com.bysj_backend.entity;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+/**
+ * 用户实体类
+ */
+public class User implements Serializable {
+
+
+
+
+
+    private String id;
+    //用户名称
+    private String name;
+    //登录名称
+    private String loginName;
+    //密码
+    private String password;
+    //性别 0 女 1 男
+    private String sex;
+    //手机号码
+    private String phone;
+    //身份证
+    private String idCard;
+    //职业
+    private String unit;
+
+
+    //创建时间
+    @TableField(fill = FieldFill.INSERT) //插入时填充字段
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createTime;
+    //更新时间
+
+    @TableField(fill = FieldFill.INSERT_UPDATE) //插入和更新时填充字段
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updateTime;
+
+
+    //生日日期
+    @JsonFormat(timezone = "GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime birthdayTime;
+
+
+}
